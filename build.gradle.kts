@@ -46,6 +46,8 @@ tasks {
     register<Jar>("uberJar") {
         archiveClassifier = "uber"
 
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
         manifest {
             attributes["Main-Class"] = "ru.tinkoff.Main"
         }
