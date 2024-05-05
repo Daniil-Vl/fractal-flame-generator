@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    implementation("info.picocli:picocli:4.7.5")
     implementation("org.apache.logging.log4j:log4j-core:2.23.1")
     implementation("org.apache.logging.log4j:log4j-api:2.23.1")
 
@@ -23,6 +24,37 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok:1.18.32")
 }
 
-tasks.test {
-    useJUnitPlatform()
+tasks {
+    jar {
+        manifest {
+            attributes["Main-Class"] = "ru.tinkoff.Main"
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    compileJava {
+        options.encoding = "UTF-8"
+    }
+
+    compileTestJava {
+        options.encoding = "UTF-8"
+    }
+
+    register<Jar>("uberJar") {
+        archiveClassifier = "uber"
+
+        manifest {
+            attributes["Main-Class"] = "ru.tinkoff.Main"
+        }
+
+        from(sourceSets.main.get().output)
+
+        dependsOn(configurations.runtimeClasspath)
+        from({
+            configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+        })
+    }
 }
