@@ -4,6 +4,12 @@ Generator can create fractal flame image using several threads.
 
 **Prerequisites: JDK-21**
 
+## Examples
+![f5](https://github.com/Daniil-Vl/fractal-flame-generator/assets/68438400/b266d55f-549d-4fdb-82c5-02841abe46c6)
+![f18](https://github.com/Daniil-Vl/fractal-flame-generator/assets/68438400/177c8fe2-c039-4c84-97cf-8acf8c66ef07)
+![fractal_4](https://github.com/Daniil-Vl/fractal-flame-generator/assets/68438400/f3d5fd5d-a812-46b5-bf66-d5e3277121fc)
+
+
 ## Getting started
 
 1. Build the project
